@@ -92,9 +92,11 @@
 		$calculatedIcecreams = array();
 		foreach($icereams as $child){
 			
-			if($child['position']!==1){
-				//continue;
+			/*
+			if($child['position']!==2){
+				continue;
 			}
+			*/
 			
 			$neighbours_icecream_max = false;
 			
@@ -125,7 +127,10 @@
 				}
 			}
 			
-			$child['icecream'] = $neighbours_icecream_max + 1;
+			if($neighbours_icecream_max !==false){
+				$child['icecream'] = $neighbours_icecream_max + 1;
+				$childrenPositions[$child['position']] = $child;
+			}
 			
 			$calculatedIcecreams[$child['position']] = $child;
 		}
@@ -151,7 +156,7 @@
 		
 	}
 	
-	$children = array(6, 3, 1, 7, 12, 7, 7, 3, 2);
+	$children = array(9, 4, 8, 8);
 	echo getIcecreamsCount($children);
 
 ?>
